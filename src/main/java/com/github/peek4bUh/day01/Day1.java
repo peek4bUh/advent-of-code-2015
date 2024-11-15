@@ -1,17 +1,14 @@
 package com.github.peek4bUh.day01;
 
+import com.github.peek4bUh.aoc2015.BaseDay;
+
 /**
  *
  * @author peek4bUh
  */
-public class Day1 {
-
-  public Puzzle1 puzzle1;
-  public Puzzle2 puzzle2;
+public class Day1 extends BaseDay {
 
   public Day1() {
-    this.puzzle1 = new Puzzle1();
-    this.puzzle2 = new Puzzle2();
+    super(new Puzzle1(), new Puzzle2());
   }
-
 }

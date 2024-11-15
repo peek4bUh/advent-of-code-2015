@@ -1,5 +1,6 @@
 package com.github.peek4bUh.day01;
 
+import com.github.peek4bUh.aoc2015.BasePuzzle;
 import com.github.peek4bUh.utils.ReadFile;
 
 /**
@@ -16,11 +17,12 @@ import com.github.peek4bUh.utils.ReadFile;
  *
  * What is the position of the character that causes Santa to first enter the
  * basement?
- * 
+ *
  * @author peek4bUh
  */
-public class Puzzle2 {
+public class Puzzle2 implements BasePuzzle {
 
+  @Override
   public void play() {
     String input = ReadFile.getResourceFileAsString("input-day01.txt");
     char[] inputList = input.toCharArray();

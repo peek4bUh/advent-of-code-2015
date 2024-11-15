@@ -1,5 +1,6 @@
 package com.github.peek4bUh.day01;
 
+import com.github.peek4bUh.aoc2015.BasePuzzle;
 import com.github.peek4bUh.utils.ReadFile;
 
 /**
@@ -33,11 +34,12 @@ import com.github.peek4bUh.utils.ReadFile;
  * first basement level). ))) and )())()) both result in floor -3.
  *
  * To what floor do the instructions take Santa?
- * 
+ *
  * @author peek4bUh
  */
-public class Puzzle1 {
+public class Puzzle1 implements BasePuzzle {
 
+  @Override
   public void play() {
     String input = ReadFile.getResourceFileAsString("input-day01.txt");
     long a = input.chars().filter(c -> c == '(').count();

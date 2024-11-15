@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -34,6 +36,27 @@ public class ReadFile {
     } catch (IOException e) {
       throw new RuntimeException("Error reading file", e);
     }
+  }
+
+  public static List<String> getResourceFileAsList(String fileName) {
+    List<String> myList = new ArrayList<>();
+
+    try {
+      ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+      InputStream is = classloader.getResourceAsStream(fileName);
+      InputStreamReader streamReader = new InputStreamReader(is, StandardCharsets.UTF_8);
+      BufferedReader reader = new BufferedReader(streamReader);
+
+      for (String line; (line = reader.readLine()) != null;) {
+        myList.add(line);
+      }
+
+    } catch (IOException ex) {
+      Logger.getLogger(ReadFile.class.getName()).log(Level.SEVERE, null, ex);
+    }
+
+    return myList;
+
   }
 
 }
