@@ -2,7 +2,9 @@ package com.github.peek4bUh.day02;
 
 import com.github.peek4bUh.aoc2015.BasePuzzle;
 import com.github.peek4bUh.utils.ReadFile;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * --- Day 2: I Was Told There Would Be No Math ---
@@ -32,9 +34,27 @@ import java.util.List;
  */
 public class Puzzle2 implements BasePuzzle {
 
-  @Override
-  public void play() {
+    @Override
+    public void play() {
+        List<String> rawBoxesDimensions = ReadFile.getResourceFileAsList("input-day02.txt");
+        List<List<Integer>> boxesDimensions = rawBoxesDimensions.stream()
+                .map(str -> Arrays.stream(str.split("x"))
+                .map(Integer::valueOf)
+                .collect(Collectors.toList()))
+                .collect(Collectors.toList());
+        int totalRibbon = boxesDimensions.stream()
+                .mapToInt(this::getShortestDistance)
+                .sum();
+        int totalRibbonBow = boxesDimensions.stream()
+                .mapToInt(boxDimensions -> boxDimensions.get(0) * boxDimensions.get(1) * boxDimensions.get(2))
+                .sum();
+        System.out.println("Solution: " + (totalRibbon + totalRibbonBow));
+    }
 
-  }
+    private int getShortestDistance(List<Integer> myList) {
+        Integer n1 = myList.stream().sorted().findFirst().get();
+        Integer n2 = myList.stream().sorted().skip(1).findFirst().get();
+        return n1 + n1 + n2 + n2;
+    }
 
 }

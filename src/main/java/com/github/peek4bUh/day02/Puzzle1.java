@@ -2,7 +2,6 @@ package com.github.peek4bUh.day02;
 
 import com.github.peek4bUh.aoc2015.BasePuzzle;
 import com.github.peek4bUh.utils.ReadFile;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -35,33 +34,34 @@ import java.util.stream.Collectors;
  */
 public class Puzzle1 implements BasePuzzle {
 
-  @Override
-  public void play() {
-    List<String> rawBoxesDimensions = ReadFile.getResourceFileAsList("input-day02.txt");
-    List<List<Integer>> boxesDimensions = rawBoxesDimensions
-            .stream()
-            .map(str -> Arrays.stream(str.split("x"))
-            .map(n -> Integer.valueOf(n))
-            .collect(Collectors.toList()))
-            .collect(Collectors.toList());
-    int totalFeetWrappingPaper = boxesDimensions.stream()
-            .mapToInt(boxDimensions -> {
-              int l = boxDimensions.get(0);
-              int w = boxDimensions.get(1);
-              int h = boxDimensions.get(2);
-              int extra = getSmallestArea(boxDimensions);
+    @Override
+    public void play() {
+        List<String> rawBoxesDimensions = ReadFile.getResourceFileAsList("input-day02.txt");
+        List<List<Integer>> boxesDimensions = rawBoxesDimensions.stream()
+                .map(str -> Arrays.stream(str.split("x"))
+                .map(Integer::valueOf)
+                .collect(Collectors.toList()))
+                .collect(Collectors.toList());
+        int totalFeetWrappingPaper = boxesDimensions.stream()
+                .mapToInt(this::calculateWrappingPaper)
+                .sum();
 
-              return (2 * l * w) + (2 * w * h) + (2 * h * l) + extra;
-            })
-            .sum();
+        System.out.println("Solution: " + totalFeetWrappingPaper);
+    }
 
-    System.out.println("Solution: " + totalFeetWrappingPaper);
-  }
+    private int calculateWrappingPaper(List<Integer> boxDimensions) {
+        int l = boxDimensions.get(0);
+        int w = boxDimensions.get(1);
+        int h = boxDimensions.get(2);
+        int extra = getSmallestArea(boxDimensions);
 
-  private int getSmallestArea(List<Integer> myList) {
-    Integer n1 = myList.stream().sorted().findFirst().get();
-    Integer n2 = myList.stream().sorted().skip(1).findFirst().get();
-    return n1 * n2;
-  }
+        return (2 * l * w) + (2 * w * h) + (2 * h * l) + extra;
+    }
+
+    private int getSmallestArea(List<Integer> myList) {
+        Integer n1 = myList.stream().sorted().findFirst().get();
+        Integer n2 = myList.stream().sorted().skip(1).findFirst().get();
+        return n1 * n2;
+    }
 
 }
