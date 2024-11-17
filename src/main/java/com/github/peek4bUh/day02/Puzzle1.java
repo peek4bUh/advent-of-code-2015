@@ -46,7 +46,7 @@ public class Puzzle1 implements BasePuzzle {
                 .mapToInt(this::calculateWrappingPaper)
                 .sum();
 
-        System.out.println("Solution: " + totalFeetWrappingPaper);
+        System.out.println("Solution 2a: " + totalFeetWrappingPaper);
     }
 
     private int calculateWrappingPaper(List<Integer> boxDimensions) {

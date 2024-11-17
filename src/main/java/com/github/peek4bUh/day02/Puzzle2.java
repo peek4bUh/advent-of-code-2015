@@ -48,7 +48,8 @@ public class Puzzle2 implements BasePuzzle {
         int totalRibbonBow = boxesDimensions.stream()
                 .mapToInt(boxDimensions -> boxDimensions.get(0) * boxDimensions.get(1) * boxDimensions.get(2))
                 .sum();
-        System.out.println("Solution: " + (totalRibbon + totalRibbonBow));
+
+        System.out.println("Solution 2b: " + (totalRibbon + totalRibbonBow));
     }
 
     private int getShortestDistance(List<Integer> myList) {

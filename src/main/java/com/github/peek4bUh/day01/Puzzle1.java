@@ -39,13 +39,13 @@ import com.github.peek4bUh.utils.ReadFile;
  */
 public class Puzzle1 implements BasePuzzle {
 
-  @Override
-  public void play() {
-    String input = ReadFile.getResourceFileAsString("input-day01.txt");
-    long a = input.chars().filter(c -> c == '(').count();
-    long b = input.chars().filter(c -> c == ')').count();
+    @Override
+    public void play() {
+        String input = ReadFile.getResourceFileAsString("input-day01.txt");
+        long a = input.chars().filter(c -> c == '(').count();
+        long b = input.chars().filter(c -> c == ')').count();
 
-    System.out.println("Solution: " + (a - b));
-  }
+        System.out.println("Solution 1a: " + (a - b));
+    }
 
 }

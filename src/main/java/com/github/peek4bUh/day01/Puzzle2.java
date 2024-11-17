@@ -22,27 +22,26 @@ import com.github.peek4bUh.utils.ReadFile;
  */
 public class Puzzle2 implements BasePuzzle {
 
-  @Override
-  public void play() {
-    String input = ReadFile.getResourceFileAsString("input-day01.txt");
-    char[] inputList = input.toCharArray();
-    int answerIndex = 0;
-    int n = 0;
+    @Override
+    public void play() {
+        String input = ReadFile.getResourceFileAsString("input-day01.txt");
+        char[] inputList = input.toCharArray();
+        int answerIndex = 0;
+        int n = 0;
 
-    for (int i = 0; i < inputList.length; i++) {
-      if (answerIndex != -1) {
-        if (inputList[i] == '(') {
-          answerIndex++;
-          n++;
-        } else if (inputList[i] == ')') {
-          answerIndex--;
-          n++;
+        for (int i = 0; i < inputList.length; i++) {
+            if (answerIndex != -1) {
+                if (inputList[i] == '(') {
+                    answerIndex++;
+                    n++;
+                } else if (inputList[i] == ')') {
+                    answerIndex--;
+                    n++;
+                }
+            }
         }
-      }
+
+        System.out.println("Solution 1b: " + n);
     }
-
-    System.out.println("Solution: " + n);
-
-  }
 
 }
