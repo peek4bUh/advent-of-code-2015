@@ -1,0 +1,16 @@
+package com.github.peek4bUh.day04;
+
+import com.github.peek4bUh.aoc2015.BasePuzzle;
+
+/**
+ *
+ * @author peek4bUh
+ */
+public class Puzzle2 implements BasePuzzle {
+
+    @Override
+    public void play() {
+
+    }
+
+}
